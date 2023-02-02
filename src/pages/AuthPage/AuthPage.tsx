@@ -10,11 +10,11 @@ const AuthPage = () => {
 		? formRef.current?.offsetWidth
 		: 900
 
-	const [active, setActive] = useState<string>('Sign In')
+	const [active, setActive] = useState<string>('Sign in')
 	const [left, setLeft] = useState<number>(-Number(formWidth) / 2)
 
 	useEffect(() => {
-		formWidth && active === 'Sign In' ? setLeft(0) : setLeft(-formWidth / 2)
+		formWidth && active === 'Sign in' ? setLeft(0) : setLeft(-formWidth / 2)
 	}, [active])
 
 	return (
@@ -22,7 +22,7 @@ const AuthPage = () => {
 			<div className={styles.auth_block}>
 				<h1 className={styles.auth_block__header}>Welcome</h1>
 				<MySelect
-					select={['Sign In', 'Sign Up']}
+					select={['Sign in', 'Sign up']}
 					active={active}
 					setActive={setActive}
 				/>
