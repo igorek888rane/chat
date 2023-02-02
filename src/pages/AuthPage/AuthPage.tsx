@@ -11,7 +11,7 @@ const AuthPage = () => {
 	useEffect(() => {
 		!left ? setLeft(-450) : setLeft(0)
 	}, [active])
-	console.log(formRef.current?.offsetWidth)
+	// console.log(formRef.current?.offsetWidth)
 	return (
 		<div className={styles.auth_page}>
 			<div className={styles.auth_block}>

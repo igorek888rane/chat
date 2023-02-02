@@ -9,23 +9,25 @@
 
 	.selects {
 		display: flex;
+		justify-content: space-evenly;
 		max-width: 300px;
+
 		.select {
-			padding: 10px;
 			cursor: pointer;
 			opacity: 0.1;
-			transition: opacity ease-out 0.3s ;
+			transition: opacity ease-out 0.3s;
+			min-width: 100px;
+
 			&.active {
 				opacity: 1;
 			}
 		}
 	}
+
 	&__border {
 		position: absolute;
-		margin-left: 9px;
-		top: 45px;
-		width: 80px;
-		border-bottom: 3px solid $message-color-sender;
-		transition: left ease-out 0.3s ;
+		top: 33px;
+		border-bottom: 2px solid $message-color-sender;
+		transition: left ease-out 0.3s;
 	}
 }

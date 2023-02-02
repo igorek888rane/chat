@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useRef, useState } from 'react'
 import styles from './MySelect.module.scss'
 
 interface selectProps {
@@ -9,15 +9,22 @@ interface selectProps {
 
 const MySelect: FC<selectProps> = ({ select, active, setActive }) => {
 	const [left, setLeft] = useState<number>(0)
+	const selectRef = useRef<HTMLDivElement>(null)
+	const selectWidth = selectRef.current?.offsetWidth
+
 	const selected = (select: string) => {
 		setActive(select)
-		left ? setLeft(0) : setLeft(100)
+		if (!selectWidth) {
+			return
+		}
+		left ? setLeft(0) : setLeft(+selectWidth)
 	}
 	return (
 		<div className={styles.mySelect_block}>
 			<div className={styles.selects}>
 				{select.map(el => (
 					<div
+						ref={selectRef}
 						key={el}
 						onClick={() => selected(el)}
 						className={`${styles.select} ${
@@ -29,7 +36,7 @@ const MySelect: FC<selectProps> = ({ select, active, setActive }) => {
 				))}
 			</div>
 			<div
-				style={{ left }}
+				style={{ left, width: selectWidth }}
 				className={styles.mySelect_block__border}
 			></div>
 		</div>
