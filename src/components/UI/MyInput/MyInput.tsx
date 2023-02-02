@@ -22,7 +22,9 @@ const MyInput: FC<MyInputProps> = ({
 }) => {
 	return (
 		<>
-			<label htmlFor={name}>{label}</label>
+			<label className={styles.label} htmlFor={name}>
+				{label}
+			</label>
 			<input
 				className={styles.input}
 				id={id}

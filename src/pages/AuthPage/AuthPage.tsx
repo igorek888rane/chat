@@ -14,7 +14,7 @@ const AuthPage = () => {
 	const [left, setLeft] = useState<number>(-Number(formWidth) / 2)
 
 	useEffect(() => {
-		formWidth && !left ? setLeft(-formWidth / 2) : setLeft(0)
+		formWidth && active === 'Sign In' ? setLeft(0) : setLeft(-formWidth / 2)
 	}, [active])
 
 	return (

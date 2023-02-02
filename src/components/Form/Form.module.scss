@@ -5,4 +5,9 @@
 	padding: 30px 40px;
 	min-width: 450px;
 	height: 100%;
+	grid-gap: 15px;
+
+	&_btn {
+		margin-top: 10px;
+	}
 }
