@@ -7,7 +7,9 @@ const AuthPage = () => {
 		<div className={styles.auth_page}>
 			<div className={styles.auth_block}>
 				<h1 className={styles.auth_block__header}>Welcome</h1>
-				<MySelect select={['Sign In', 'Sign Up']} />
+				<div className={styles.auth_block__select_form}>
+					<MySelect select={['Sign In', 'Sign Up']} />
+				</div>
 			</div>
 		</div>
 	)

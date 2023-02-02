@@ -3,15 +3,26 @@
 .mySelect_block {
 	display: flex;
 	align-items: center;
+	flex-direction: column;
 	margin-top: 25px;
+	position: relative;
 
-	.select {
-		padding: 10px;
-		cursor: pointer;
-		opacity: 0.1;
-		&.active {
-			opacity: 1;
-			border-bottom: 4px solid $message-color-sender;
+	.selects {
+		display: flex;
+		.select {
+			padding: 10px;
+			cursor: pointer;
+			opacity: 0.1;
+			&.active {
+				opacity: 1;
+			}
 		}
+	}
+	&__border {
+		position: absolute;
+		top: 45px;
+		//left: 0;
+		width: 90px;
+		border-bottom: 4px solid $message-color-sender;
 	}
 }
