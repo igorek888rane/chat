@@ -14,10 +14,9 @@ const MySelect: FC<selectProps> = ({ select, active, setActive }) => {
 
 	const selected = (select: string) => {
 		setActive(select)
-		if (!selectWidth) {
-			return
+		if (selectWidth) {
+			!left ? setLeft(+selectWidth) : setLeft(0)
 		}
-		left ? setLeft(0) : setLeft(+selectWidth)
 	}
 	return (
 		<div className={styles.mySelect_block}>

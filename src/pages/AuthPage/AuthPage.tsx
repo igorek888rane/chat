@@ -5,13 +5,18 @@ import FormLogin from '../../components/Form/FormLogin'
 import FormRegister from '../../components/Form/FormRegister'
 
 const AuthPage = () => {
-	const [active, setActive] = useState<string>('Sign In')
-	const [left, setLeft] = useState<number>(-450)
 	const formRef = useRef<HTMLDivElement>(null)
+	const formWidth = formRef.current?.offsetWidth
+		? formRef.current?.offsetWidth
+		: 900
+
+	const [active, setActive] = useState<string>('Sign In')
+	const [left, setLeft] = useState<number>(-Number(formWidth) / 2)
+
 	useEffect(() => {
-		!left ? setLeft(-450) : setLeft(0)
+		formWidth && !left ? setLeft(-formWidth / 2) : setLeft(0)
 	}, [active])
-	// console.log(formRef.current?.offsetWidth)
+
 	return (
 		<div className={styles.auth_page}>
 			<div className={styles.auth_block}>
