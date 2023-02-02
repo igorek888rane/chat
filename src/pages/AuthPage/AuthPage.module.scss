@@ -1,0 +1,20 @@
+@import 'src/styles/variable';
+
+.auth_page {
+	display: flex;
+	justify-content: center;
+
+	.auth_block {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 60px;
+		min-width: 400px;
+		height: 600px;
+		background-color: $additional-color;
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+		&__header {
+			margin-top: 25px;
+		}
+	}
+}

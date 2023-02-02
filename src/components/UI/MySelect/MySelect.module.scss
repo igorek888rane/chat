@@ -1,0 +1,17 @@
+@import 'src/styles/variable';
+
+.mySelect_block {
+	display: flex;
+	align-items: center;
+	margin-top: 25px;
+
+	.select {
+		padding: 10px;
+		cursor: pointer;
+		opacity: 0.1;
+		&.active {
+			opacity: 1;
+			border-bottom: 4px solid $message-color-sender;
+		}
+	}
+}
