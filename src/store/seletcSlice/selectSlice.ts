@@ -5,7 +5,7 @@ export interface SelectState {
 }
 
 const initialState: SelectState = {
-	active: 'Sign In',
+	active: '',
 }
 
 export const selectSlice = createSlice({

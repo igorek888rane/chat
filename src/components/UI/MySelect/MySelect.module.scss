@@ -9,10 +9,12 @@
 
 	.selects {
 		display: flex;
+		max-width: 300px;
 		.select {
 			padding: 10px;
 			cursor: pointer;
 			opacity: 0.1;
+			transition: opacity ease-out 0.3s ;
 			&.active {
 				opacity: 1;
 			}
@@ -20,9 +22,10 @@
 	}
 	&__border {
 		position: absolute;
+		margin-left: 9px;
 		top: 45px;
-		//left: 0;
-		width: 90px;
-		border-bottom: 4px solid $message-color-sender;
+		width: 80px;
+		border-bottom: 3px solid $message-color-sender;
+		transition: left ease-out 0.3s ;
 	}
 }

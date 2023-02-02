@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styles from './Form.module.scss'
 import { useFormik } from 'formik'
 import MyInput from '../UI/MyInput/MyInput'
 import MyButton from '../UI/MyButton/MyButton'
 
-const Form = () => {
+const FormLogin: FC = () => {
 	const { handleSubmit, values, handleChange } = useFormik({
 		initialValues: {
 			phoneNumber: '',
@@ -39,4 +39,4 @@ const Form = () => {
 	)
 }
 
-export default Form
+export default FormLogin
