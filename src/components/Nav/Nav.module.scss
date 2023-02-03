@@ -1,0 +1,11 @@
+@import '/src/styles/variable';
+
+.nav_block {
+	display: flex;
+	flex-direction: column;
+
+	a {
+		text-decoration: none;
+		color: #ffff;
+	}
+}
