@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import select from './seletcSlice/selectSlice'
+import auth from './authSlice/authSlice'
 
 export const store = configureStore({
 	reducer: {
-		select,
+		auth,
 	},
 })
 

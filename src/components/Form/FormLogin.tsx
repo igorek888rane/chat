@@ -4,9 +4,14 @@ import { useFormik } from 'formik'
 import MyInput from '../UI/MyInput/MyInput'
 import MyButton from '../UI/MyButton/MyButton'
 import { validationSchema } from '../../utils/validationSchema'
+import { useNavigate } from 'react-router-dom'
+import { useAppDispatch } from '../../hooks/useApp'
+import { setIsAuth } from '../../store/authSlice/authSlice'
 
 const FormLogin: FC = () => {
 	const validate = validationSchema('login')
+	const navigate = useNavigate()
+	const dispatch = useAppDispatch()
 	const {
 		handleSubmit,
 		values,
@@ -23,6 +28,9 @@ const FormLogin: FC = () => {
 		validationSchema: validate,
 		onSubmit: values => {
 			console.log(values)
+			dispatch(setIsAuth(true))
+			window.localStorage.setItem('auth', 'true')
+			navigate('/chat')
 		},
 	})
 	return (
