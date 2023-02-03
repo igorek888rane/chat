@@ -5,9 +5,15 @@
 	padding: 30px 40px;
 	min-width: 450px;
 	height: 100%;
-	grid-gap: 15px;
+	grid-gap: 20px;
 
 	&_btn {
 		margin-top: 10px;
+	}
+}
+
+@media (max-width: 500px) {
+	.form {
+		max-width: 450px;
 	}
 }

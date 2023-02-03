@@ -18,22 +18,24 @@ const AuthPage = () => {
 	}, [active])
 
 	return (
-		<div className={styles.auth_page}>
-			<div className={styles.auth_block}>
-				<h1 className={styles.auth_block__header}>Welcome</h1>
-				<MySelect
-					select={['Sign in', 'Sign up']}
-					active={active}
-					setActive={setActive}
-				/>
-				<div className={styles.auth_block__form}>
-					<div
-						style={{ left }}
-						className={styles.form_inner}
-						ref={formRef}
-					>
-						<FormLogin />
-						<FormRegister />
+		<div className={'content'}>
+			<div className={styles.auth_page}>
+				<div className={styles.auth_block}>
+					<h1 className={styles.auth_block__header}>Welcome</h1>
+					<MySelect
+						select={['Sign in', 'Sign up']}
+						active={active}
+						setActive={setActive}
+					/>
+					<div className={styles.auth_block__form}>
+						<div
+							style={{ left }}
+							className={styles.form_inner}
+							ref={formRef}
+						>
+							<FormLogin />
+							<FormRegister />
+						</div>
 					</div>
 				</div>
 			</div>

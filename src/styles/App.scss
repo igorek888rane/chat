@@ -4,10 +4,15 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Itim', cursive;
 }
 
 body {
 	background-color: $backgroundColor;
+}
+.content {
+	margin: 0 auto;
+	max-width: 1200px;
 }
 
 h1 {

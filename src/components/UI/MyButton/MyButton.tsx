@@ -3,11 +3,16 @@ import styles from './MyButton.module.scss'
 
 interface ButtonProps {
 	type: 'button' | 'submit' | 'reset' | undefined
+	disabled?: boolean
 }
 
-const MyButton: FC<PropsWithChildren<ButtonProps>> = ({ type, children }) => {
+const MyButton: FC<PropsWithChildren<ButtonProps>> = ({
+	type,
+	disabled,
+	children,
+}) => {
 	return (
-		<button className={styles.btn} type={type}>
+		<button className={styles.btn} disabled={disabled} type={type}>
 			{children}
 		</button>
 	)
