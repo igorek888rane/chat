@@ -5,7 +5,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	width: 100%;
-	background-color: #ffff;
+	border: 1px solid $grey;
 
 	.header {
 		display: flex;
@@ -14,7 +14,7 @@
 		height: 56px;
 		background-color: $additional-color;
 		color: #ffff;
-		border-left: 2px solid $grey;
+
 		border-bottom: 2px solid $grey;
 	}
 
@@ -39,7 +39,7 @@
 			resize: none;
 			outline: none;
 			background-color: transparent;
-			color: $backgroundColor;
+			color: #ffff;
 			font-size: 20px;
 			border: none;
 			overflow: hidden;
