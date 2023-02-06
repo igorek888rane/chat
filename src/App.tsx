@@ -5,6 +5,7 @@ import ChatPage from './pages/ChatPage/ChatPage'
 import RequireAuth from './hoc/RequireAuth'
 import SearchPage from './pages/SearhPage/SearchPage'
 import Layout from './components/Layout'
+import SettingPage from './pages/SettingPage/SettingPage'
 
 function App() {
 	return (
@@ -25,6 +26,14 @@ function App() {
 						element={
 							<RequireAuth>
 								<SearchPage />
+							</RequireAuth>
+						}
+					/>
+					<Route
+						path={'settings'}
+						element={
+							<RequireAuth>
+								<SettingPage />
 							</RequireAuth>
 						}
 					/>

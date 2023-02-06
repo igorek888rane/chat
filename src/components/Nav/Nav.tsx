@@ -3,7 +3,12 @@ import styles from './Nav.module.scss'
 import { Link, NavLink } from 'react-router-dom'
 import { useAppDispatch } from '../../hooks/useApp'
 import { setIsAuth } from '../../store/authSlice/authSlice'
-import { BiLogOut, BsFillChatRightTextFill, FaSearch } from 'react-icons/all'
+import {
+	BiLogOut,
+	BsFillChatRightTextFill,
+	FaSearch,
+	VscSettings,
+} from 'react-icons/all'
 
 const Nav: FC = () => {
 	const dispatch = useAppDispatch()
@@ -34,6 +39,14 @@ const Nav: FC = () => {
 					to={'/search'}
 				>
 					<FaSearch size={20} style={{ color: '#5d606a' }} />
+				</NavLink>
+				<NavLink
+					className={({ isActive }) =>
+						isActive ? styles.active : ''
+					}
+					to={'/settings'}
+				>
+					<VscSettings size={20} style={{ color: '#5d606a' }} />
 				</NavLink>
 			</div>
 			<Link onClick={logOut} to={'/login'}>
