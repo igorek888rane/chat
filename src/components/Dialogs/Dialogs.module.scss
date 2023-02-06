@@ -5,15 +5,18 @@
 	flex-direction: column;
 	grid-gap: 10px;
 	min-width: 250px;
-	height: 100%;
 	margin-left: 10px;
+	height: 100%;
+	background-color: $additional-color;
 	.header {
 		text-align: start;
 		padding: 5px;
+		margin-left: 10px;
 	}
 	.dialog {
 		display: flex;
-		padding: 5px;
+		align-items: center;
+		padding: 15px;
 		cursor: pointer;
 		width: 100%;
 		text-decoration: none;
