@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './AuthPage.module.scss'
-import MySelect from '../../components/UI/MySelect/MySelect'
+import MyToggle from '../../components/UI/MyToggle/MyToggle'
 import FormLogin from '../../components/Form/FormLogin'
 import FormRegister from '../../components/Form/FormRegister'
 
@@ -22,8 +22,8 @@ const AuthPage = () => {
 			<div className={styles.auth_page}>
 				<div className={styles.auth_block}>
 					<h1 className={styles.auth_block__header}>Welcome</h1>
-					<MySelect
-						select={['Sign in', 'Sign up']}
+					<MyToggle
+						toggleElements={['Sign in', 'Sign up']}
 						active={active}
 						setActive={setActive}
 					/>

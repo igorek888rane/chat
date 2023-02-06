@@ -1,18 +1,18 @@
 @import 'src/styles/variable';
 
-.mySelect_block {
+.myToggle_block {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 	margin-top: 25px;
 	position: relative;
 
-	.selects {
+	.toggle {
 		display: flex;
 		justify-content: space-evenly;
 		max-width: 300px;
 
-		.select {
+		.toggle_el {
 			cursor: pointer;
 			opacity: 0.1;
 			transition: opacity ease-out 0.3s;
