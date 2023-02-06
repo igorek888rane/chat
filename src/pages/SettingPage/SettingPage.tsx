@@ -1,7 +1,7 @@
-import React from 'react'
+import { FC } from 'react'
 import styles from './SettingPage.module.scss'
 
-const SettingPage = () => {
+const SettingPage: FC = () => {
 	return <div className={styles.chat_block}>setting</div>
 }
 

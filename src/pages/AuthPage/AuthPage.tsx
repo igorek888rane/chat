@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import styles from './AuthPage.module.scss'
 import MyToggle from '../../components/UI/MyToggle/MyToggle'
 import FormLogin from '../../components/Form/FormLogin'
 import FormRegister from '../../components/Form/FormRegister'
 
-const AuthPage = () => {
+const AuthPage: FC = () => {
 	const formRef = useRef<HTMLDivElement>(null)
 	const formWidth = formRef.current?.offsetWidth
 		? formRef.current?.offsetWidth

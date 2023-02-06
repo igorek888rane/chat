@@ -1,0 +1,41 @@
+@import 'src/styles/variable';
+
+.dialogs_block {
+	display: flex;
+	flex-direction: column;
+	grid-gap: 10px;
+	min-width: 250px;
+	height: 100%;
+	margin-left: 10px;
+	.header {
+		text-align: start;
+		padding: 5px;
+	}
+	.dialog {
+		display: flex;
+		padding: 5px;
+		cursor: pointer;
+		width: 100%;
+		text-decoration: none;
+		.dialog_avatar {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			border: 1px solid #ffff;
+			color: #ffff;
+		}
+		.dialog_name {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-left: 10px;
+			color: #ffff;
+		}
+		&.active {
+			background-color: $active-color;
+		}
+	}
+}

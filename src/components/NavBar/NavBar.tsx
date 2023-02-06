@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import styles from './Nav.module.scss'
+import styles from './NavBar.module.scss'
 import { Link, NavLink } from 'react-router-dom'
 import { useAppDispatch } from '../../hooks/useApp'
 import { setIsAuth } from '../../store/authSlice/authSlice'
@@ -10,7 +10,7 @@ import {
 	VscSettings,
 } from 'react-icons/all'
 
-const Nav: FC = () => {
+const NavBar: FC = () => {
 	const dispatch = useAppDispatch()
 	const logOut = () => {
 		window.localStorage.removeItem('auth')
@@ -56,4 +56,4 @@ const Nav: FC = () => {
 	)
 }
 
-export default Nav
+export default NavBar

@@ -1,12 +1,12 @@
 import { FC } from 'react'
-import Nav from './Nav/Nav'
+import NavBar from './NavBar/NavBar'
 import { Outlet } from 'react-router-dom'
 
 const Layout: FC = () => {
 	return (
 		<div className={'content'}>
 			<div className={'app__content'}>
-				<Nav />
+				<NavBar />
 				<Outlet />
 			</div>
 		</div>
