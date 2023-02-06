@@ -24,10 +24,14 @@ let dialogs = [
 const Dialogs: FC = () => {
 	return (
 		<div className={styles.dialogs_block}>
-			<h1 className={styles.header}>Dialogs</h1>
-			{dialogs.map(el => (
-				<DialogEl key={el.phoneNumber} username={el.username} />
-			))}
+			<div className={styles.header}>
+				<h1 className={styles.header_text}>Dialogs</h1>
+			</div>
+			<div className={styles.dialogs}>
+				{dialogs.map(el => (
+					<DialogEl key={el.phoneNumber} username={el.username} />
+				))}
+			</div>
 		</div>
 	)
 }

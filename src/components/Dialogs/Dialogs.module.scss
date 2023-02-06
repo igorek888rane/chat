@@ -9,41 +9,54 @@
 	background-color: $additional-color;
 
 	.header {
-		text-align: start;
-		padding: 5px;
-		margin-left: 10px;
-		margin-top: 2px;
-	}
-
-	.dialog {
 		display: flex;
 		align-items: center;
-		padding: 15px;
-		cursor: pointer;
-		width: 100%;
-		text-decoration: none;
+		height: 60px;
 
-		.dialog_avatar {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 30px;
-			height: 30px;
-			border-radius: 50%;
-			border: 1px solid #ffff;
-			color: #ffff;
-		}
-
-		.dialog_name {
-			display: flex;
-			align-items: center;
-			justify-content: center;
+		.header_text {
+			text-align: start;
 			margin-left: 10px;
-			color: #ffff;
+		}
+	}
+
+	.dialogs {
+		height: 100%;
+		overflow-y: scroll;
+
+		&::-webkit-scrollbar {
+			width: 1px;
 		}
 
-		&.active {
-			background-color: $active-color;
+		.dialog {
+			display: flex;
+			align-items: center;
+			padding: 15px;
+			cursor: pointer;
+			width: 100%;
+			text-decoration: none;
+
+			.dialog_avatar {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				border: 1px solid #ffff;
+				color: #ffff;
+			}
+
+			.dialog_name {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-left: 10px;
+				color: #ffff;
+			}
+
+			&.active {
+				background-color: $active-color;
+			}
 		}
 	}
 }
