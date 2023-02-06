@@ -46,7 +46,10 @@ const NavBar: FC = () => {
 					}
 					to={'/settings'}
 				>
-					<VscSettings size={20} style={{ color: '#5d606a' }} />
+					<VscSettings
+						size={20}
+						style={{ color: '#5d606a', transform: 'rotate(90deg)' }}
+					/>
 				</NavLink>
 			</div>
 			<Link onClick={logOut} to={'/login'}>
