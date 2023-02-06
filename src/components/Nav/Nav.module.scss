@@ -3,9 +3,25 @@
 .nav_block {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+	background-color: $backgroundColor;
+	padding: 15px;
+	height: 100%;
+	.nav_link {
+		display: flex;
+		flex-direction: column;
+		grid-gap: 20px;
+	}
 
 	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 35px;
+		height: 35px;
 		text-decoration: none;
-		color: #ffff;
+		&.active {
+			background-color: $additional-color;
+		}
 	}
 }
