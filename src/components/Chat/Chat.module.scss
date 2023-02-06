@@ -1,3 +1,53 @@
+@import 'src/styles/variable';
+
 .chat_block {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
 	background-color: #ffff;
+
+	.header {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 58px;
+		background-color: $additional-color;
+		color: #ffff;
+		border-left: 2px solid $grey;
+		border-bottom: 2px solid $grey;
+	}
+
+	.chat_area {
+		height: 100%;
+		overflow-y: scroll;
+
+		&::-webkit-scrollbar {
+			width: 1px;
+		}
+	}
+
+	.chat_text_send {
+		display: flex;
+		align-items: center;
+		border: 1px solid $grey;
+		height: 40px;
+
+		textarea {
+			width: 100%;
+			height: 40px;
+			resize: none;
+			outline: none;
+			background-color: transparent;
+			color: $backgroundColor;
+			font-size: 20px;
+			border: none;
+			overflow: hidden;
+		}
+
+		.send_icon {
+			color: $backgroundColor;
+			cursor: pointer;
+		}
+	}
 }

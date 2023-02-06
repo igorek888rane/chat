@@ -1,4 +1,21 @@
+@import 'src/styles/variable';
+
 .chat_block {
 	display: flex;
 	flex-direction: row;
+	flex-basis: 100%;
+
+	.no_chat {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		border: 1px solid $grey;
+
+		h2 {
+			padding: 15px;
+			background-color: $backgroundColor;
+			border-radius: 25px;
+		}
+	}
 }

@@ -10,10 +10,12 @@
 body {
 	background-color: $backgroundColor;
 }
+
 .content {
 	margin: 0 auto;
 	max-width: 1200px;
 }
+
 .app__content {
 	display: flex;
 	flex-direction: row;
@@ -21,7 +23,6 @@ body {
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 	margin-top: 70px;
 	height: 70vh;
-	border-radius: 25px;
 }
 
 h1 {

@@ -26,7 +26,7 @@ const Dialogs: FC = () => {
 		<div className={styles.dialogs_block}>
 			<h1 className={styles.header}>Dialogs</h1>
 			{dialogs.map(el => (
-				<DialogEl username={el.username} />
+				<DialogEl key={el.phoneNumber} username={el.username} />
 			))}
 		</div>
 	)
