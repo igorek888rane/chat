@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import styles from './Chat.module.scss'
 import { useParams } from 'react-router-dom'
 import Message from './Message/Message'
-import MessageInputField from '../UI/MessageInputField/MessageInputField'
+import MessageInputField from './MessageInputField/MessageInputField'
 
 export interface messageType {
 	id: number

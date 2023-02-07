@@ -3,7 +3,7 @@ import styles from './MessageInputField.module.scss'
 import { IoSend } from 'react-icons/all'
 import { useFormik } from 'formik'
 import { useAppSelector } from '../../../hooks/useApp'
-import { messageType } from '../../Chat/Chat'
+import { messageType } from '../Chat'
 
 interface MessageInputFieldProps {
 	messages: messageType[]

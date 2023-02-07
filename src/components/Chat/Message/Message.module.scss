@@ -2,10 +2,13 @@
 
 .message_block {
 	padding: 5px 10px;
-	max-width: 250px;
+	width: fit-content;
+	max-width: 300px;
+	height: fit-content;
 	border-radius: 10px;
 	margin: 10px;
 	position: relative;
+	word-wrap: break-word;
 
 	&.message_sender {
 		margin-left: 10px;
