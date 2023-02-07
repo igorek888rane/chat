@@ -11,8 +11,15 @@ function App() {
 	return (
 		<div className='App'>
 			<Routes>
-				<Route path={'/login'} element={<AuthPage />} />
-				<Route path={'/'} element={<Layout />}>
+				<Route path={'/auth'} element={<AuthPage />} />
+				<Route
+					path={'/'}
+					element={
+						<RequireAuth>
+							<Layout />
+						</RequireAuth>
+					}
+				>
 					<Route
 						path={'chat'}
 						element={

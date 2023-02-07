@@ -52,7 +52,7 @@ const NavBar: FC = () => {
 					/>
 				</NavLink>
 			</div>
-			<Link onClick={logOut} to={'/login'}>
+			<Link onClick={logOut} to={'/auth'}>
 				<BiLogOut size={25} style={{ color: '#5d606a' }} />
 			</Link>
 		</div>

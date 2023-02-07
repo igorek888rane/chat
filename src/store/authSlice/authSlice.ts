@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface SelectState {
 	isAuth: boolean
+	id: number
 }
 
 const initialState: SelectState = {
 	isAuth: !!window.localStorage.getItem('auth'),
+	id: 1,
 }
 
 export const authSlice = createSlice({

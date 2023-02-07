@@ -9,7 +9,7 @@ type childrenType = {
 const RequireAuth: FC<PropsWithChildren<childrenType>> = ({ children }) => {
 	const { isAuth } = useAppSelector(state => state.auth)
 
-	return isAuth ? children : <Navigate to={'/login'} />
+	return isAuth ? children : <Navigate to={'/auth'} />
 }
 
 export default RequireAuth

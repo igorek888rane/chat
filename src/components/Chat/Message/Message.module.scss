@@ -1,0 +1,45 @@
+@import 'src/styles/variable';
+
+.message_block {
+	padding: 5px 1px 5px 10px;
+	max-width: 300px;
+	border-radius: 10px;
+	margin: 10px;
+	position: relative;
+
+	&.message_sender {
+		margin-left: 10px;
+		background-color: $message-color-sender;
+
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 0;
+			height: 0;
+			border-top: 8px solid transparent;
+			border-bottom: 8px solid transparent;
+			border-right: 20px solid $message-color-sender;
+			left: -10px;
+			bottom: 0;
+		}
+	}
+
+	&.message_recipient {
+		margin-left: auto;
+		background-color: $message-color-recipient;
+
+		&::before {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 0;
+			height: 0;
+			border-top: 8px solid transparent;
+			border-bottom: 8px solid transparent;
+			border-left: 20px solid $message-color-recipient;
+			right: -10px;
+			bottom: 0;
+		}
+	}
+}

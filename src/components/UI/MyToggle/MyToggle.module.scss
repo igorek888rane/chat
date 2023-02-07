@@ -27,7 +27,7 @@
 	&__border {
 		position: absolute;
 		top: 33px;
-		border-bottom: 2px solid $message-color-sender;
+		border-bottom: 2px solid $message-color-recipient;
 		transition: left ease-out 0.3s;
 	}
 }
