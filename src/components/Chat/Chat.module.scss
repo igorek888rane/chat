@@ -40,12 +40,14 @@
 			background-color: transparent;
 			color: #ffff;
 			font-size: 20px;
-			border: none;
+			border: 1px solid $grey;
+			border-top-right-radius: 25px;
+			border-bottom-right-radius: 25px;
 			overflow: hidden;
 		}
 
 		.send_icon {
-			color: $backgroundColor;
+			color: $message-color-recipient;
 			cursor: pointer;
 		}
 	}

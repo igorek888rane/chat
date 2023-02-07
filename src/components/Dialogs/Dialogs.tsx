@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import styles from './Dialogs.module.scss'
 import DialogEl from './DialogEl'
+import { Link } from 'react-router-dom'
 
 let dialogs = [
 	{
@@ -24,9 +25,9 @@ let dialogs = [
 const Dialogs: FC = () => {
 	return (
 		<div className={styles.dialogs_block}>
-			<div className={styles.header}>
+			<Link to={'/chat'} className={styles.header}>
 				<h1 className={styles.header_text}>Dialogs</h1>
-			</div>
+			</Link>
 			<div className={styles.dialogs}>
 				{dialogs.map(el => (
 					<DialogEl key={el.phoneNumber} username={el.username} />
