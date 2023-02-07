@@ -25,7 +25,7 @@ let dialogs = [
 const Dialogs: FC = () => {
 	return (
 		<div className={styles.dialogs_block}>
-			<Link to={'/chat'} className={styles.header}>
+			<Link to={'/'} className={styles.header}>
 				<h1 className={styles.header_text}>Dialogs</h1>
 			</Link>
 			<div className={styles.dialogs}>

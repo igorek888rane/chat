@@ -30,7 +30,7 @@ const FormLogin: FC = () => {
 			console.log(values)
 			dispatch(setIsAuth(true))
 			window.localStorage.setItem('auth', 'true')
-			navigate('/chat')
+			navigate('/')
 		},
 	})
 	return (

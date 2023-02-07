@@ -9,7 +9,7 @@ interface DialogsProps {
 const DialogEl: FC<DialogsProps> = ({ username }) => {
 	return (
 		<NavLink
-			to={`/chat/${username}`}
+			to={`/${username}`}
 			className={({ isActive }) =>
 				isActive
 					? `${styles.dialog} ${styles.active}`

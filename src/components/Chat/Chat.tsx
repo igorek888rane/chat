@@ -1,10 +1,16 @@
-import { ChangeEvent, FC, useState } from 'react'
+import { FC, useState } from 'react'
 import styles from './Chat.module.scss'
 import { useParams } from 'react-router-dom'
-import { IoSend } from 'react-icons/all'
 import Message from './Message/Message'
+import MessageInputField from '../UI/MessageInputField/MessageInputField'
 
-const messages = [
+export interface messageType {
+	id: number
+	userId: number
+	message: string
+}
+
+const messagesData: messageType[] = [
 	{
 		id: 1,
 		userId: 1,
@@ -33,23 +39,14 @@ const messages = [
 	{
 		id: 6,
 		userId: 1,
-		message:
-			"Lorem ipsum — классический текст-«рыба». ' +\n" +
-			"\t\t\t'Является искажённым отрывком из философского трактата Марка Туллия Цицерона «О пределах добра и зла», ' +\n" +
-			"\t\t\t'написанного в 45 году до н. э. на латинском языке, обнаружение сходства приписывается Ричарду Макклинтоку.'",
-	},
-	{
-		id: 7,
-		userId: 2,
-		message:
-			'Lorem ipsum — классический текст-«рыба». ' +
-			'Является искажённым отрывком из философского трактата Марка Туллия Цицерона «О пределах добра и зла», ' +
-			'написанного в 45 году до н. э. на латинском языке, обнаружение сходства приписывается Ричарду Макклинтоку.',
+		message: 'Good',
 	},
 ]
+
 const Chat: FC = () => {
 	const params = useParams()
-	const [text, setText] = useState('')
+	const [messages, setMessages] = useState<messageType[]>(messagesData)
+
 	return (
 		<div className={styles.chat_block}>
 			<div className={styles.header}>
@@ -64,16 +61,7 @@ const Chat: FC = () => {
 					/>
 				))}
 			</div>
-			<div className={styles.chat_text_send}>
-				<textarea
-					value={text}
-					onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-						setText(e.target.value)
-					}
-					placeholder={'Enter text message...'}
-				></textarea>
-				<IoSend className={styles.send_icon} size={35} />
-			</div>
+			<MessageInputField messages={messages} setMessages={setMessages} />
 		</div>
 	)
 }

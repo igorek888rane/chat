@@ -21,7 +21,7 @@ function App() {
 					}
 				>
 					<Route
-						path={'chat'}
+						path={''}
 						element={
 							<RequireAuth>
 								<ChatPage />
@@ -29,7 +29,7 @@ function App() {
 						}
 					/>
 					<Route
-						path={'chat/:username'}
+						path={':username'}
 						element={
 							<RequireAuth>
 								<ChatPage />
