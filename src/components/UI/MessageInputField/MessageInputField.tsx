@@ -20,15 +20,23 @@ const MessageInputField: FC<MessageInputFieldProps> = ({
 			text: '',
 		},
 		onSubmit: values => {
-			setMessages([
-				...messages,
-				{ id: messages.length + 1, userId: id, message: values.text },
-			])
-			values.text = ''
+			if (values.text) {
+				setMessages([
+					...messages,
+					{
+						id: messages.length + 1,
+						userId: id,
+						message: values.text,
+					},
+				])
+				values.text = ''
+			}
 		},
 	})
 	const onKeyDownHandler = (e: any) => {
-		if (e.code === 'Enter') {
+		if (e.shiftKey && e.code === 'Enter') {
+			values.text += '\n'
+		} else if (e.code === 'Enter') {
 			e.preventDefault()
 			handleSubmit()
 		}
