@@ -48,7 +48,7 @@ const Chat: FC = () => {
 	const [messages, setMessages] = useState<messageType[]>(messagesData)
 	const chatAreaRef = useRef<HTMLDivElement>(null)
 	useEffect(() => {
-		chatAreaRef.current?.lastElementChild?.scrollIntoView({
+		chatAreaRef.current?.scrollIntoView({
 			behavior: 'smooth',
 			block: 'end',
 		})
@@ -59,7 +59,7 @@ const Chat: FC = () => {
 			<div className={styles.header}>
 				<h1>{params.username}</h1>
 			</div>
-			<div ref={chatAreaRef} className={styles.chat_area}>
+			<div className={styles.chat_area}>
 				{messages.map(el => (
 					<Message
 						userId={el.userId}
@@ -67,6 +67,7 @@ const Chat: FC = () => {
 						key={el.id}
 					/>
 				))}
+				<div ref={chatAreaRef}></div>
 			</div>
 			<MessageInputField messages={messages} setMessages={setMessages} />
 		</div>

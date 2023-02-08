@@ -44,6 +44,7 @@ const MessageInputField: FC<MessageInputFieldProps> = ({
 	return (
 		<form onSubmit={handleSubmit} className={styles.message_input_field}>
 			<textarea
+				rows={4}
 				id={'text'}
 				name={'text'}
 				onKeyDown={onKeyDownHandler}
