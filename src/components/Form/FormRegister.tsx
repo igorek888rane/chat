@@ -31,7 +31,7 @@ const FormRegister: FC = () => {
 			console.log(values)
 			dispatch(setIsAuth(true))
 			window.localStorage.setItem('auth', 'true')
-			navigate('/')
+			navigate('/chat')
 		},
 	})
 	return (

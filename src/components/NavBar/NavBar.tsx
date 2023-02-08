@@ -23,7 +23,7 @@ const NavBar: FC = () => {
 					className={({ isActive }) =>
 						isActive ? styles.active : ''
 					}
-					to={'/'}
+					to={'/chat'}
 				>
 					<BsFillChatRightTextFill
 						size={20}

@@ -20,40 +20,19 @@ function App() {
 						</RequireAuth>
 					}
 				>
-					<Route
-						path={''}
-						element={
-							<RequireAuth>
-								<ChatPage />
-							</RequireAuth>
-						}
-					/>
-					<Route
-						path={':username'}
-						element={
-							<RequireAuth>
-								<ChatPage />
-							</RequireAuth>
-						}
-					/>
-					<Route
-						path={'search'}
-						element={
-							<RequireAuth>
-								<SearchPage />
-							</RequireAuth>
-						}
-					/>
-					<Route
-						path={'settings'}
-						element={
-							<RequireAuth>
-								<SettingPage />
-							</RequireAuth>
-						}
-					/>
+					<Route path={'chat'} element={<ChatPage />} />
+					<Route path={'chat/:username'} element={<ChatPage />} />
+					<Route path={'search'} element={<SearchPage />} />
+					<Route path={'settings'} element={<SettingPage />} />
 				</Route>
-				<Route path={'*'} element={<div>Not Found</div>} />
+				<Route
+					path={'*'}
+					element={
+						<RequireAuth>
+							<div>Not Found</div>
+						</RequireAuth>
+					}
+				/>
 			</Routes>
 		</div>
 	)
