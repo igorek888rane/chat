@@ -6,10 +6,10 @@
 	justify-content: center;
 	border: 1px solid $grey;
 	min-height: 50px;
+	max-height: 210px;
 	font-size: 24px;
 
 	textarea {
-		display: block;
 		width: 100%;
 		min-height: 40px;
 		max-height: 200px;
@@ -20,27 +20,22 @@
 		font-size: 20px;
 		word-wrap: break-word;
 		border: 0;
-		//border: 1px solid $grey;
-		border-top-right-radius: 25px;
-		border-bottom-right-radius: 25px;
 		overflow-y: auto;
 		overflow-x: hidden;
-		box-sizing: border-box;
 		line-height: 17px;
 
 		&::-webkit-scrollbar {
 			width: 0;
 		}
-
-	}
-
-	.send_icon {
-		color: $message-color-recipient;
-		cursor: pointer;
 	}
 
 	.btn_submit {
 		background-color: transparent;
 		border: 0;
+
+		.send_icon {
+			color: $message-color-recipient;
+			cursor: pointer;
+		}
 	}
 }

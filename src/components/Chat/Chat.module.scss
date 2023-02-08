@@ -11,14 +11,15 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: 56px;
+		min-height: 56px;
 		background-color: $additional-color;
 		color: #ffff;
 		border-bottom: 1px solid $grey;
 	}
 
 	.chat_area {
-		height: 100%;
+		//height: 100%;
+		margin-top: auto;
 		overflow-y: auto;
 
 		&::-webkit-scrollbar {

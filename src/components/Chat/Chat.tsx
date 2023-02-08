@@ -53,6 +53,7 @@ const Chat: FC = () => {
 			block: 'end',
 		})
 	}, [messages])
+
 	return (
 		<div className={styles.chat_block}>
 			<div className={styles.header}>
