@@ -46,9 +46,11 @@ const messagesData: messageType[] = [
 const Chat: FC = () => {
 	const params = useParams()
 	const [messages, setMessages] = useState<messageType[]>(messagesData)
-	const chatAreaRef = useRef<HTMLDivElement>(null)
+	const intoViewRef = useRef<HTMLDivElement>(null)
+
+
 	useEffect(() => {
-		chatAreaRef.current?.scrollIntoView({
+		intoViewRef.current?.scrollIntoView({
 			behavior: 'smooth',
 			block: 'end',
 		})
@@ -67,9 +69,9 @@ const Chat: FC = () => {
 						key={el.id}
 					/>
 				))}
-				<div ref={chatAreaRef}></div>
+				<div ref={intoViewRef}></div>
 			</div>
-			<MessageInputField messages={messages} setMessages={setMessages} />
+			<MessageInputField messages={messages} setMessages={setMessages}/>
 		</div>
 	)
 }
