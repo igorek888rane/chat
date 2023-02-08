@@ -1,0 +1,25 @@
+@import 'src/styles/variable';
+
+.textarea {
+	width: 100%;
+	margin-right: 5px;
+	resize: none;
+	outline: none;
+	background-color: transparent;
+	color: #ffff;
+	font-size: 20px;
+	word-wrap: break-word;
+	border: 0;
+	border-right: 1px solid $grey;
+	overflow-y: auto;
+	overflow-x: hidden;
+	line-height: 17px;
+
+	&::placeholder {
+		padding-top: 2px;
+	}
+
+	&::-webkit-scrollbar {
+		width: 0;
+	}
+}

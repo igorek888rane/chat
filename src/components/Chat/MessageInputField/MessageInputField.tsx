@@ -4,6 +4,7 @@ import { IoSend } from 'react-icons/all'
 import { useAppSelector } from '../../../hooks/useApp'
 import { messageType } from '../Chat'
 import { useFormik } from 'formik'
+import MyTextArea from '../../UI/MyTextArea/MyTextArea'
 
 interface MessageInputFieldProps {
 	messages: messageType[]
@@ -33,27 +34,16 @@ const MessageInputField: FC<MessageInputFieldProps> = ({
 			}
 		},
 	})
-	const onKeyDownHandler = (e: any) => {
-		if (e.shiftKey && e.code === 'Enter') {
-			return
-		} else if (e.code === 'Enter') {
-			e.preventDefault()
-			handleSubmit()
-		}
-	}
+
 	return (
 		<form onSubmit={handleSubmit} className={styles.message_input_field}>
-			<textarea
-				rows={4}
-				id={'text'}
-				name={'text'}
-				onKeyDown={onKeyDownHandler}
-				value={values.text}
-				onChange={handleChange}
-				placeholder={'Enter text message...'}
-				accessKey={'a'}
-			></textarea>
-			<button className={styles.btn_submit}>
+			<MyTextArea
+				text={values.text}
+				rows={{ minRows: 2, maxRows: 6 }}
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+			/>
+			<button type={'submit'} className={styles.btn_submit}>
 				<IoSend className={styles.send_icon} size={35} />
 			</button>
 		</form>

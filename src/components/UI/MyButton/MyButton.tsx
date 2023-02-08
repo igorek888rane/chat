@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, PointerEvent } from 'react'
+import { FC, PointerEvent, PropsWithChildren } from 'react'
 import styles from './MyButton.module.scss'
 
 interface ButtonProps {
