@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import styles from './Chat.module.scss'
 import { useParams } from 'react-router-dom'
 import Message from './Message/Message'
@@ -46,13 +46,19 @@ const messagesData: messageType[] = [
 const Chat: FC = () => {
 	const params = useParams()
 	const [messages, setMessages] = useState<messageType[]>(messagesData)
-
+	const chatAreaRef = useRef<HTMLDivElement>(null)
+	useEffect(() => {
+		chatAreaRef.current?.lastElementChild?.scrollIntoView({
+			behavior: 'smooth',
+			block: 'end',
+		})
+	}, [messages])
 	return (
 		<div className={styles.chat_block}>
 			<div className={styles.header}>
 				<h1>{params.username}</h1>
 			</div>
-			<div className={styles.chat_area}>
+			<div ref={chatAreaRef} className={styles.chat_area}>
 				{messages.map(el => (
 					<Message
 						userId={el.userId}

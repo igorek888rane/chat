@@ -14,7 +14,7 @@ const Message: FC<MessageProps> = ({ message, userId }) => {
 		? classes.push(styles.message_recipient)
 		: classes.push(styles.message_sender)
 
-	return <div className={classes.join(' ')}>{message}</div>
+	return <p className={classes.join(' ')}>{message}</p>
 }
 
 export default Message
