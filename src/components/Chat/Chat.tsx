@@ -1,57 +1,17 @@
-import { FC, useEffect, useRef, useState } from 'react'
+import { FC, useEffect, useRef } from 'react'
 import styles from './Chat.module.scss'
 import { NavLink, useParams } from 'react-router-dom'
 import Message from './Message/Message'
 import MessageInputField from './MessageInputField/MessageInputField'
+import { useAppDispatch, useAppSelector } from '../../hooks/useApp'
+import { setZIndex } from '../../store/zIndexSlice/zIndexSlice'
 
-export interface messageType {
-	id: number
-	userId: number
-	message: string
-}
-
-interface ChatProps {
-	zIndex: number
-	setZIndex: (zIndex: number) => void
-}
-
-const messagesData: messageType[] = [
-	{
-		id: 1,
-		userId: 1,
-		message: 'Hello',
-	},
-	{
-		id: 2,
-		userId: 1,
-		message: 'How are you?',
-	},
-	{
-		id: 3,
-		userId: 2,
-		message: 'Hello',
-	},
-	{
-		id: 4,
-		userId: 2,
-		message: 'Good',
-	},
-	{
-		id: 5,
-		userId: 2,
-		message: 'And you',
-	},
-	{
-		id: 6,
-		userId: 1,
-		message: 'Good',
-	},
-]
-
-const Chat: FC<ChatProps> = ({ zIndex, setZIndex }) => {
+const Chat: FC = () => {
 	const params = useParams()
-	const [messages, setMessages] = useState<messageType[]>(messagesData)
 	const intoViewRef = useRef<HTMLDivElement>(null)
+	const { messages } = useAppSelector(state => state.messages)
+	const { zIndex } = useAppSelector(state => state.zIndex)
+	const dispatch = useAppDispatch()
 
 	useEffect(() => {
 		intoViewRef.current?.scrollIntoView({
@@ -65,7 +25,7 @@ const Chat: FC<ChatProps> = ({ zIndex, setZIndex }) => {
 			<div className={styles.header}>
 				<NavLink
 					className={styles.back}
-					onClick={() => setZIndex(1)}
+					onClick={() => dispatch(setZIndex(1))}
 					to={'/chat'}
 				>
 					{'<-'}
@@ -82,7 +42,7 @@ const Chat: FC<ChatProps> = ({ zIndex, setZIndex }) => {
 				))}
 				<div ref={intoViewRef}></div>
 			</div>
-			<MessageInputField messages={messages} setMessages={setMessages} />
+			<MessageInputField />
 		</div>
 	)
 }

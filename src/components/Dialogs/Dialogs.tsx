@@ -22,11 +22,7 @@ let dialogs = [
 	},
 ]
 
-interface DialogsProps {
-	setZIndex: (zIndex: number) => void
-}
-
-const Dialogs: FC<DialogsProps> = ({ setZIndex }) => {
+const Dialogs: FC = () => {
 	return (
 		<div className={styles.dialogs_block}>
 			<Link to={'/chat'} className={styles.header}>
@@ -34,11 +30,7 @@ const Dialogs: FC<DialogsProps> = ({ setZIndex }) => {
 			</Link>
 			<div className={styles.dialogs}>
 				{dialogs.map(el => (
-					<DialogEl
-						setZIndex={setZIndex}
-						key={el.phoneNumber}
-						username={el.username}
-					/>
+					<DialogEl key={el.phoneNumber} username={el.username} />
 				))}
 			</div>
 		</div>

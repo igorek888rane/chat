@@ -1,35 +1,29 @@
 import { FC } from 'react'
 import styles from './MessageInputField.module.scss'
 import { IoSend } from 'react-icons/all'
-import { useAppSelector } from '../../../hooks/useApp'
-import { messageType } from '../Chat'
+import { useAppDispatch, useAppSelector } from '../../../hooks/useApp'
 import { useFormik } from 'formik'
 import MyTextArea from '../../UI/MyTextArea/MyTextArea'
+import { setMessages } from '../../../store/messagesSlice/messagesSlice'
 
-interface MessageInputFieldProps {
-	messages: messageType[]
-	setMessages: (message: messageType[]) => void
-}
-
-const MessageInputField: FC<MessageInputFieldProps> = ({
-	setMessages,
-	messages,
-}) => {
+const MessageInputField: FC = () => {
 	const { id } = useAppSelector(state => state.auth)
+	const dispatch = useAppDispatch()
+
 	const { handleSubmit, handleChange, values } = useFormik({
 		initialValues: {
 			text: '',
 		},
 		onSubmit: values => {
 			if (values.text) {
-				setMessages([
-					...messages,
-					{
+				console.log(values.text)
+				dispatch(
+					setMessages({
 						id: Date.now(),
 						userId: id,
 						message: values.text,
-					},
-				])
+					})
+				)
 				values.text = ''
 			}
 		},
