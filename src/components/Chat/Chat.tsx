@@ -4,7 +4,7 @@ import { NavLink, useParams } from 'react-router-dom'
 import Message from './Message/Message'
 import MessageInputField from './MessageInputField/MessageInputField'
 import { useAppDispatch, useAppSelector } from '../../hooks/useApp'
-import { setZIndex } from '../../store/zIndexSlice/zIndexSlice'
+import { screenWidthCheck } from '../../utils/screenWidthCheck'
 
 const Chat: FC = () => {
 	const params = useParams()
@@ -12,7 +12,6 @@ const Chat: FC = () => {
 	const { messages } = useAppSelector(state => state.messages)
 	const { zIndex } = useAppSelector(state => state.zIndex)
 	const dispatch = useAppDispatch()
-
 	useEffect(() => {
 		intoViewRef.current?.scrollIntoView({
 			behavior: 'smooth',
@@ -25,7 +24,7 @@ const Chat: FC = () => {
 			<div className={styles.header}>
 				<NavLink
 					className={styles.back}
-					onClick={() => dispatch(setZIndex(1))}
+					onClick={() => screenWidthCheck(1, dispatch)}
 					to={'/chat'}
 				>
 					{'<-'}
