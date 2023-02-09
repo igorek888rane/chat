@@ -33,6 +33,21 @@
 			width: 0;
 		}
 	}
+
+	.messages_not {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		background-color: $backgroundColor;
+		border-radius: 25px;
+		margin: 0 auto;
+		padding: 15px;
+
+		p {
+			color: #ffff;
+		}
+	}
 }
 
 @media (max-width: 576px) {
