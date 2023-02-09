@@ -4,7 +4,7 @@
 	display: flex;
 	flex-direction: column;
 	grid-gap: 10px;
-	min-width: 300px;
+	width: 300px;
 	height: 100%;
 	background-color: $additional-color;
 
@@ -60,5 +60,25 @@
 				background-color: $active-color;
 			}
 		}
+	}
+}
+
+@media (max-width: 992px) {
+	.dialogs_block {
+		max-width: 180px;
+	}
+}
+
+@media (max-width: 768px) {
+	.dialogs_block {
+		width: 100vw;
+	}
+}
+
+@media (max-width: 576px) {
+	.dialogs_block {
+		min-width: 100%;
+		position: absolute;
+		z-index: 2;
 	}
 }

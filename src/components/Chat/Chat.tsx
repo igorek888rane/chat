@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import styles from './Chat.module.scss'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import Message from './Message/Message'
 import MessageInputField from './MessageInputField/MessageInputField'
 
@@ -8,6 +8,11 @@ export interface messageType {
 	id: number
 	userId: number
 	message: string
+}
+
+interface ChatProps {
+	zIndex: number
+	setZIndex: (zIndex: number) => void
 }
 
 const messagesData: messageType[] = [
@@ -43,11 +48,10 @@ const messagesData: messageType[] = [
 	},
 ]
 
-const Chat: FC = () => {
+const Chat: FC<ChatProps> = ({ zIndex, setZIndex }) => {
 	const params = useParams()
 	const [messages, setMessages] = useState<messageType[]>(messagesData)
 	const intoViewRef = useRef<HTMLDivElement>(null)
-
 
 	useEffect(() => {
 		intoViewRef.current?.scrollIntoView({
@@ -57,8 +61,15 @@ const Chat: FC = () => {
 	}, [messages])
 
 	return (
-		<div className={styles.chat_block}>
+		<div className={styles.chat_block} style={{ zIndex }}>
 			<div className={styles.header}>
+				<NavLink
+					className={styles.back}
+					onClick={() => setZIndex(1)}
+					to={'/chat'}
+				>
+					{'<-'}
+				</NavLink>
 				<h1>{params.username}</h1>
 			</div>
 			<div className={styles.chat_area}>
@@ -71,7 +82,7 @@ const Chat: FC = () => {
 				))}
 				<div ref={intoViewRef}></div>
 			</div>
-			<MessageInputField messages={messages} setMessages={setMessages}/>
+			<MessageInputField messages={messages} setMessages={setMessages} />
 		</div>
 	)
 }

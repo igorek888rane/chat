@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import styles from './NavBar.module.scss'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useParams } from 'react-router-dom'
 import { useAppDispatch } from '../../hooks/useApp'
 import { setIsAuth } from '../../store/authSlice/authSlice'
 import {
@@ -12,12 +12,20 @@ import {
 
 const NavBar: FC = () => {
 	const dispatch = useAppDispatch()
+	const params = useParams()
 	const logOut = () => {
 		window.localStorage.removeItem('auth')
 		dispatch(setIsAuth(false))
 	}
 	return (
-		<div className={styles.nav_block}>
+		<div
+			style={
+				params.hasOwnProperty('username')
+					? { display: 'none' }
+					: { display: 'flex' }
+			}
+			className={styles.nav_block}
+		>
 			<div className={styles.nav_link}>
 				<NavLink
 					className={({ isActive }) =>
