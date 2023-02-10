@@ -2,20 +2,20 @@ import { FC } from 'react'
 import styles from './NavBar.module.scss'
 import { Link, NavLink, useParams } from 'react-router-dom'
 import { useAppDispatch } from '../../hooks/useApp'
-import { setIsAuth } from '../../store/authSlice/authSlice'
 import {
 	BiLogOut,
 	BsFillChatRightTextFill,
 	FaSearch,
 	VscSettings,
 } from 'react-icons/all'
+import { logOut } from '../../store/authSlice/authSlice'
 
 const NavBar: FC = () => {
 	const dispatch = useAppDispatch()
 	const params = useParams()
-	const logOut = () => {
-		window.localStorage.removeItem('auth')
-		dispatch(setIsAuth(false))
+	const logOutHandler = () => {
+		window.localStorage.removeItem('token')
+		dispatch(logOut())
 	}
 	return (
 		<div
@@ -60,7 +60,7 @@ const NavBar: FC = () => {
 					/>
 				</NavLink>
 			</div>
-			<Link onClick={logOut} to={'/auth'}>
+			<Link onClick={logOutHandler} to={'/auth'}>
 				<BiLogOut size={25} style={{ color: '#5d606a' }} />
 			</Link>
 		</div>

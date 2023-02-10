@@ -10,7 +10,7 @@ export const validationSchema = (schema: schemaType) => {
 				.required('Обязательное поле'),
 			password: yup
 				.string()
-				.min(8, 'Минимум 8 символов')
+				.min(3, 'Минимум 8 символов')
 				.required('Обязательное поле'),
 		})
 	} else if (schema === 'register') {
@@ -25,7 +25,7 @@ export const validationSchema = (schema: schemaType) => {
 				.required('Обязательное поле'),
 			password: yup
 				.string()
-				.min(8, 'Минимум 8 символов')
+				.min(3, 'Минимум 8 символов')
 				.required('Обязательное поле'),
 		})
 	}

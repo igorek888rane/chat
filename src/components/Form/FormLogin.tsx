@@ -6,7 +6,7 @@ import MyButton from '../UI/MyButton/MyButton'
 import { validationSchema } from '../../utils/validationSchema'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../hooks/useApp'
-import { setIsAuth } from '../../store/authSlice/authSlice'
+import { setAuth } from '../../store/authSlice/authSlice'
 
 const FormLogin: FC = () => {
 	const validate = validationSchema('login')
@@ -26,10 +26,13 @@ const FormLogin: FC = () => {
 			password: '',
 		},
 		validationSchema: validate,
-		onSubmit: values => {
-			console.log(values)
-			dispatch(setIsAuth(true))
-			window.localStorage.setItem('auth', 'true')
+		onSubmit: async values => {
+			await dispatch(
+				setAuth({
+					params: { email: values.email, password: values.password },
+					path: 'login',
+				})
+			)
 			navigate('/chat')
 		},
 	})
@@ -63,7 +66,7 @@ const FormLogin: FC = () => {
 
 			<div className={styles.form_btn}>
 				<MyButton disabled={isSubmitting} type={'submit'}>
-					Send
+					SIGN IN
 				</MyButton>
 			</div>
 		</form>

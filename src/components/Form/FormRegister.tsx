@@ -5,8 +5,8 @@ import MyInput from '../UI/MyInput/MyInput'
 import MyButton from '../UI/MyButton/MyButton'
 import { validationSchema } from '../../utils/validationSchema'
 import { useNavigate } from 'react-router-dom'
-import { setIsAuth } from '../../store/authSlice/authSlice'
 import { useAppDispatch } from '../../hooks/useApp'
+import { setAuth } from '../../store/authSlice/authSlice'
 
 const FormRegister: FC = () => {
 	const validate = validationSchema('register')
@@ -27,10 +27,17 @@ const FormRegister: FC = () => {
 			password: '',
 		},
 		validationSchema: validate,
-		onSubmit: values => {
-			console.log(values)
-			dispatch(setIsAuth(true))
-			window.localStorage.setItem('auth', 'true')
+		onSubmit: async values => {
+			await dispatch(
+				setAuth({
+					params: {
+						email: values.email,
+						username: values.username,
+						password: values.password,
+					},
+					path: 'register',
+				})
+			)
 			navigate('/chat')
 		},
 	})
@@ -74,7 +81,7 @@ const FormRegister: FC = () => {
 			/>
 			<div className={styles.form_btn}>
 				<MyButton disabled={isSubmitting} type={'submit'}>
-					Send
+					SIGN OUT
 				</MyButton>
 			</div>
 		</form>
