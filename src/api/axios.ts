@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios'
 
 const instance: AxiosInstance = axios.create({
-	baseURL: 'http://localhost:5000/',
+	baseURL: import.meta.env.VITE_BASE_URL,
 	headers: {
 		Authorization: ` Bearer ${window.localStorage.getItem('token')}`,
 	},

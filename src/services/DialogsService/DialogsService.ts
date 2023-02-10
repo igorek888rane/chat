@@ -4,7 +4,7 @@ import { IDialog } from './DialogType'
 export const dialogApi = createApi({
 	reducerPath: `dialogApi`,
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://localhost:5000/dialog',
+		baseUrl: `${import.meta.env.VITE_BASE_URL}dialog`,
 		headers: {
 			Authorization: ` Bearer ${window.localStorage.getItem('token')}`,
 		},
