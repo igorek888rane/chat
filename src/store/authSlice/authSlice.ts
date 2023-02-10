@@ -1,17 +1,6 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import axios from 'axios'
-
-interface IUser {
-	id: string
-	email: string
-	username: string
-	dialogs: string[]
-}
-
-export interface AuthState extends IUser {
-	loading: boolean
-	isAuth: boolean
-}
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { AuthState, IUser } from './AuthTypes'
+import { getMe, setAuth } from './AsyncThunk'
 
 const initialState: AuthState = {
 	id: '',
@@ -21,39 +10,6 @@ const initialState: AuthState = {
 	loading: false,
 	isAuth: false,
 }
-
-interface IParams {
-	params: {
-		email: string
-		password: string
-		username?: string
-	}
-	path: string
-}
-
-interface IData extends IUser {
-	token: string
-}
-
-export const setAuth = createAsyncThunk(
-	'auth/setIsAuth',
-	async ({ params, path }: IParams) => {
-		const { data } = await axios.post<IData>(
-			`http://localhost:5000/auth/${path}`,
-			params
-		)
-		window.localStorage.setItem('token', data.token)
-		return data
-	}
-)
-export const getMe = createAsyncThunk('auth/getMe', async () => {
-	const { data } = await axios.get<IUser>('http://localhost:5000/auth/me', {
-		headers: {
-			Authorization: ` Bearer ${window.localStorage.getItem('token')}`,
-		},
-	})
-	return data
-})
 
 export const authSlice = createSlice({
 	name: 'auth',
