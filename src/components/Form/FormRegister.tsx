@@ -27,8 +27,8 @@ const FormRegister: FC = () => {
 			password: '',
 		},
 		validationSchema: validate,
-		onSubmit: async values => {
-			await dispatch(
+		onSubmit: values => {
+			dispatch(
 				setAuth({
 					params: {
 						email: values.email,

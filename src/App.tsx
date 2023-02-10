@@ -8,7 +8,6 @@ import Layout from './components/Layout'
 import SettingPage from './pages/SettingPage/SettingPage'
 import { useAppDispatch, useAppSelector } from './hooks/useApp'
 import { useEffect } from 'react'
-import RequireNoAuth from './hoc/RequireNoAuth'
 import { getMe } from './store/authSlice/AsyncThunk'
 
 function App() {
@@ -28,14 +27,7 @@ function App() {
 	return (
 		<div className='App'>
 			<Routes>
-				<Route
-					path={'/auth'}
-					element={
-						<RequireNoAuth>
-							<AuthPage />
-						</RequireNoAuth>
-					}
-				/>
+				<Route path={'/auth'} element={<AuthPage />} />
 				<Route
 					path={'/'}
 					element={

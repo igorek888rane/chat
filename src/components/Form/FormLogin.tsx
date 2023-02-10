@@ -26,8 +26,8 @@ const FormLogin: FC = () => {
 			password: '',
 		},
 		validationSchema: validate,
-		onSubmit: async values => {
-			await dispatch(
+		onSubmit: values => {
+			dispatch(
 				setAuth({
 					params: { email: values.email, password: values.password },
 					path: 'login',
