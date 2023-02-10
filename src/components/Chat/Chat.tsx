@@ -1,16 +1,18 @@
 import { FC, useEffect, useRef } from 'react'
 import styles from './Chat.module.scss'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Message from './Message/Message'
 import MessageInputField from './MessageInputField/MessageInputField'
 import { useAppDispatch, useAppSelector } from '../../hooks/useApp'
 import { screenWidthCheck } from '../../utils/screenWidthCheck'
 import { CgHello } from 'react-icons/all'
 import { setMessages } from '../../store/messagesSlice/messagesSlice'
-import { dialogApi } from '../../services/DialogsService/DialogsService'
 
-const Chat: FC = () => {
-	const params = useParams()
+interface ChatProps {
+	companionUsername: string | undefined
+}
+
+const Chat: FC<ChatProps> = ({ companionUsername }) => {
 	const intoViewRef = useRef<HTMLDivElement>(null)
 	const { messages } = useAppSelector(state => state.messages)
 	const { zIndex } = useAppSelector(state => state.zIndex)
@@ -22,10 +24,7 @@ const Chat: FC = () => {
 			block: 'end',
 		})
 	}, [messages])
-	const { data: dialogs } = dialogApi.useFetchDialogsByUserQuery()
-	const companion = dialogs?.find(
-		dialog => dialog.dialogId === params.dialogsId
-	)
+
 	return (
 		<div className={styles.chat_block} style={{ zIndex }}>
 			<div className={styles.header}>
@@ -36,7 +35,7 @@ const Chat: FC = () => {
 				>
 					{'<-'}
 				</NavLink>
-				<h1>{companion?.companionUsername}</h1>
+				<h1>{companionUsername}</h1>
 			</div>
 			<div
 				className={

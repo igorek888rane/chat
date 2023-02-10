@@ -1,15 +1,18 @@
 import { FC } from 'react'
 import styles from './Dialogs.module.scss'
 import { Link } from 'react-router-dom'
-import { dialogApi } from '../../services/DialogsService/DialogsService'
 import DialogEl from './DialogEl'
+import { SerializedError } from '@reduxjs/toolkit'
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
+import { IDialog } from '../../services/DialogsService/DialogType'
 
-const Dialogs: FC = () => {
-	const {
-		data: dialogs,
-		error,
-		isLoading,
-	} = dialogApi.useFetchDialogsByUserQuery()
+interface DialogsProps {
+	isLoading: boolean
+	error: SerializedError | FetchBaseQueryError | undefined
+	dialogs: IDialog[] | undefined
+}
+
+const Dialogs: FC<DialogsProps> = ({ isLoading, error, dialogs }) => {
 
 	return (
 		<div className={styles.dialogs_block}>
