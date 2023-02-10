@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/useApp'
 import { screenWidthCheck } from '../../utils/screenWidthCheck'
 import { CgHello } from 'react-icons/all'
 import { setMessages } from '../../store/messagesSlice/messagesSlice'
+import { dialogApi } from '../../services/DialogsService/DialogsService'
 
 const Chat: FC = () => {
 	const params = useParams()
@@ -21,7 +22,10 @@ const Chat: FC = () => {
 			block: 'end',
 		})
 	}, [messages])
-
+	const { data: dialogs } = dialogApi.useFetchDialogsByUserQuery()
+	const companion = dialogs?.find(
+		dialog => dialog.dialogId === params.dialogsId
+	)
 	return (
 		<div className={styles.chat_block} style={{ zIndex }}>
 			<div className={styles.header}>
@@ -32,7 +36,7 @@ const Chat: FC = () => {
 				>
 					{'<-'}
 				</NavLink>
-				<h1>{params.dialogsId}</h1>
+				<h1>{companion?.companionUsername}</h1>
 			</div>
 			<div
 				className={
