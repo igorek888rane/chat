@@ -1,13 +1,29 @@
 import './styles/App.scss'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import AuthPage from './pages/AuthPage/AuthPage'
 import ChatPage from './pages/ChatPage/ChatPage'
 import RequireAuth from './hoc/RequireAuth'
 import SearchPage from './pages/SearhPage/SearchPage'
 import Layout from './components/Layout'
 import SettingPage from './pages/SettingPage/SettingPage'
+import { useAppDispatch, useAppSelector } from './hooks/useApp'
+import { useEffect } from 'react'
+import { getMe } from './store/authSlice/authSlice'
 
 function App() {
+	const dispatch = useAppDispatch()
+	const { loading } = useAppSelector(state => state.auth)
+	const navigate = useNavigate()
+	const location = useLocation()
+	useEffect(() => {
+		if (localStorage.getItem('token')) {
+			dispatch(getMe())
+			navigate(`${location.pathname}`)
+		}
+	}, [])
+	if (loading) {
+		return <h1>Loading...</h1>
+	}
 	return (
 		<div className='App'>
 			<Routes>

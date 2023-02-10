@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 interface IUser {
@@ -10,6 +10,7 @@ interface IUser {
 
 export interface AuthState extends IUser {
 	loading: boolean
+	isAuth: boolean
 }
 
 const initialState: AuthState = {
@@ -18,6 +19,7 @@ const initialState: AuthState = {
 	username: '',
 	dialogs: [],
 	loading: false,
+	isAuth: false,
 }
 
 interface IParams {
@@ -44,6 +46,14 @@ export const setAuth = createAsyncThunk(
 		return data
 	}
 )
+export const getMe = createAsyncThunk('auth/getMe', async () => {
+	const { data } = await axios.get<IUser>('http://localhost:5000/auth/me', {
+		headers: {
+			Authorization: ` Bearer ${window.localStorage.getItem('token')}`,
+		},
+	})
+	return data
+})
 
 export const authSlice = createSlice({
 	name: 'auth',
@@ -56,20 +66,41 @@ export const authSlice = createSlice({
 			state.dialogs = []
 		},
 	},
-	extraReducers(builder) {
-		builder.addCase(setAuth.pending, state => {
+	extraReducers: {
+		[setAuth.pending.type]: (state: AuthState) => {
 			state.loading = true
-		})
-		builder.addCase(setAuth.fulfilled, (state, action) => {
+		},
+		[setAuth.fulfilled.type]: (
+			state: AuthState,
+			action: PayloadAction<IUser>
+		) => {
 			state.id = action.payload.id
 			state.email = action.payload.email
 			state.username = action.payload.username
 			state.dialogs = action.payload.dialogs
 			state.loading = false
-		})
-		builder.addCase(setAuth.rejected, state => {
+			state.isAuth = true
+		},
+		[setAuth.rejected.type]: (state: AuthState) => {
 			state.loading = false
-		})
+		},
+		[getMe.pending.type]: (state: AuthState) => {
+			state.loading = true
+		},
+		[getMe.fulfilled.type]: (
+			state: AuthState,
+			action: PayloadAction<IUser>
+		) => {
+			state.id = action.payload.id
+			state.email = action.payload.email
+			state.username = action.payload.username
+			state.dialogs = action.payload.dialogs
+			state.loading = false
+			state.isAuth = true
+		},
+		[getMe.rejected.type]: (state: AuthState) => {
+			state.loading = false
+		},
 	},
 })
 
