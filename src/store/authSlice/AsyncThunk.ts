@@ -1,23 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
-import { IData, IParams, IUser } from './AuthTypes'
+import { IParams } from './AuthTypes'
+import { fetchAuth, fetchMe } from '../../api/authApi'
 
 export const setAuth = createAsyncThunk(
 	'auth/setIsAuth',
 	async ({ params, path }: IParams) => {
-		const { data } = await axios.post<IData>(
-			`http://localhost:5000/auth/${path}`,
-			params
-		)
+		const { data } = await fetchAuth({ params, path })
 		window.localStorage.setItem('token', data.token)
 		return data
 	}
 )
 export const getMe = createAsyncThunk('auth/getMe', async () => {
-	const { data } = await axios.get<IUser>('http://localhost:5000/auth/me', {
-		headers: {
-			Authorization: ` Bearer ${window.localStorage.getItem('token')}`,
-		},
-	})
+	const { data } = await fetchMe()
 	return data
 })
