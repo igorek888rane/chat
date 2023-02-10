@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios/index'
+import axios from 'axios'
 import { IData, IParams, IUser } from './AuthTypes'
 
 export const setAuth = createAsyncThunk(

@@ -6,7 +6,7 @@ import MyButton from '../UI/MyButton/MyButton'
 import { validationSchema } from '../../utils/validationSchema'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../hooks/useApp'
-import { setAuth } from '../../store/authSlice/authSlice'
+import { setAuth } from '../../store/authSlice/AsyncThunk'
 
 const FormRegister: FC = () => {
 	const validate = validationSchema('register')
