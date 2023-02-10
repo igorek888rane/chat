@@ -22,8 +22,8 @@ const FormRegister: FC = () => {
 		isSubmitting,
 	} = useFormik({
 		initialValues: {
-			phoneNumber: '',
-			userName: '',
+			email: '',
+			username: '',
 			password: '',
 		},
 		validationSchema: validate,
@@ -37,26 +37,26 @@ const FormRegister: FC = () => {
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
 			<MyInput
-				id={'phoneNumber'}
-				name={'phoneNumber'}
-				type={'tel'}
-				label={'Phone Number'}
-				placeholder={'Enter your number'}
-				value={values.phoneNumber}
-				errors={errors.phoneNumber}
-				touched={touched.phoneNumber}
+				id={'email'}
+				name={'email'}
+				type={'email'}
+				label={'Email'}
+				placeholder={'Enter your email'}
+				value={values.email}
+				errors={errors.email}
+				touched={touched.email}
 				onChange={handleChange}
 				onBlur={handleBlur}
 			/>
 			<MyInput
-				id={'userName'}
-				name={'userName'}
+				id={'username'}
+				name={'username'}
 				type={'text'}
 				label={'Username'}
 				placeholder={'Enter your username'}
-				value={values.userName}
-				errors={errors.userName}
-				touched={touched.userName}
+				value={values.username}
+				errors={errors.username}
+				touched={touched.username}
 				onChange={handleChange}
 				onBlur={handleBlur}
 			/>

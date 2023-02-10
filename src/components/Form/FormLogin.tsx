@@ -22,7 +22,7 @@ const FormLogin: FC = () => {
 		isSubmitting,
 	} = useFormik({
 		initialValues: {
-			phoneNumber: '',
+			email: '',
 			password: '',
 		},
 		validationSchema: validate,
@@ -36,14 +36,14 @@ const FormLogin: FC = () => {
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
 			<MyInput
-				id={'phoneNumber'}
-				name={'phoneNumber'}
-				type={'tel'}
-				label={'Phone Number'}
-				placeholder={'Enter your number'}
-				value={values.phoneNumber}
-				errors={errors.phoneNumber}
-				touched={touched.phoneNumber}
+				id={'email'}
+				name={'email'}
+				type={'email'}
+				label={'Email'}
+				placeholder={'Enter your email '}
+				value={values.email}
+				errors={errors.email}
+				touched={touched.email}
 				onChange={handleChange}
 				onBlur={handleBlur}
 			/>

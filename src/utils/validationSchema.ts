@@ -4,10 +4,9 @@ type schemaType = 'login' | 'register'
 export const validationSchema = (schema: schemaType) => {
 	if (schema === 'login') {
 		return yup.object().shape({
-			phoneNumber: yup
-				.number()
-				.typeError('Должно быть число')
-				.min(1, 'Не может быть меньше 1 ')
+			email: yup
+				.string()
+				.email('Некоректный адрес почты')
 				.required('Обязательное поле'),
 			password: yup
 				.string()
@@ -16,12 +15,11 @@ export const validationSchema = (schema: schemaType) => {
 		})
 	} else if (schema === 'register') {
 		return yup.object().shape({
-			phoneNumber: yup
-				.number()
-				.typeError('Должно быть число')
-				.min(1, 'Не может быть меньше 1 ')
+			email: yup
+				.string()
+				.email('Некоректный адрес почты')
 				.required('Обязательное поле'),
-			userName: yup
+			username: yup
 				.string()
 				.min(5, 'Минимум 5 символов')
 				.required('Обязательное поле'),
