@@ -32,28 +32,36 @@
 		.dialog {
 			display: flex;
 			align-items: center;
-			padding: 15px;
+			//padding: 15px;
 			cursor: pointer;
 			width: 100%;
+			padding: 7px 0;
 			text-decoration: none;
 
 			.dialog_avatar {
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				width: 30px;
-				height: 30px;
+				width: 50px;
+				height: 50px;
 				border-radius: 50%;
 				border: 1px solid #ffff;
 				color: #ffff;
 			}
 
-			.dialog_name {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				margin-left: 10px;
-				color: #ffff;
+			.dialog_info {
+				margin-left: 15px;
+
+				.dialog_name {
+					display: flex;
+					align-items: center;
+					font-size: 1rem;
+					color: #ffff;
+				}
+
+				.dialog_last_message {
+					color: $grey;
+				}
 			}
 
 			&.active {
@@ -65,13 +73,24 @@
 
 @media (max-width: 992px) {
 	.dialogs_block {
-		max-width: 180px;
+		width: 250px;
+
+		.dialogs {
+			.dialog {
+				padding: 10px 0;
+
+				.dialog_avatar {
+					width: 40px;
+					height: 40px;
+				}
+			}
+		}
 	}
 }
 
 @media (max-width: 768px) {
 	.dialogs_block {
-		width: 100vw;
+		width: 250px;
 	}
 }
 
@@ -80,5 +99,16 @@
 		min-width: 100%;
 		position: absolute;
 		z-index: 2;
+
+		.dialogs {
+			.dialog {
+				padding: 10px 0;
+
+				.dialog_avatar {
+					width: 50px;
+					height: 50px;
+				}
+			}
+		}
 	}
 }

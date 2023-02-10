@@ -7,9 +7,10 @@ import { screenWidthCheck } from '../../utils/screenWidthCheck'
 interface DialogsProps {
 	username: string
 	dialogId: string
+	lastMessage: string
 }
 
-const DialogEl: FC<DialogsProps> = ({ username, dialogId }) => {
+const DialogEl: FC<DialogsProps> = ({ username, dialogId, lastMessage }) => {
 	const dispatch = useAppDispatch()
 
 	return (
@@ -25,7 +26,14 @@ const DialogEl: FC<DialogsProps> = ({ username, dialogId }) => {
 			<div className={styles.dialog_avatar}>
 				{username.slice(0, 2).toUpperCase()}
 			</div>
-			<div className={styles.dialog_name}>{username}</div>
+			<div className={styles.dialog_info}>
+				<div className={styles.dialog_name}>{username}</div>
+				<div className={styles.dialog_last_message}>
+					{lastMessage.length > 25
+						? lastMessage.slice(0, 25) + '...'
+						: lastMessage}
+				</div>
+			</div>
 		</NavLink>
 	)
 }

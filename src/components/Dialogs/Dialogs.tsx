@@ -25,6 +25,7 @@ const Dialogs: FC = () => {
 							key={dialog.dialogId}
 							dialogId={dialog.dialogId}
 							username={dialog.companionUsername}
+							lastMessage={dialog.lastMessage}
 						/>
 					))}
 			</div>
