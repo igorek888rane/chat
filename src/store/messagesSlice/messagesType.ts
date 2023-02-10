@@ -1,5 +1,5 @@
 export interface messageType {
 	id: number
-	userId: number
+	userId: string
 	message: string
 }

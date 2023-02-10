@@ -10,7 +10,7 @@ const ChatPage: FC = () => {
 	return (
 		<div className={styles.chat_block}>
 			<Dialogs />
-			{params.hasOwnProperty('username') ? (
+			{params.hasOwnProperty('dialogsId') ? (
 				<Chat />
 			) : (
 				<div className={styles.no_chat}>

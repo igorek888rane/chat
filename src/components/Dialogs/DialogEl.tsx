@@ -6,14 +6,15 @@ import { screenWidthCheck } from '../../utils/screenWidthCheck'
 
 interface DialogsProps {
 	username: string
+	dialogId: string
 }
 
-const DialogEl: FC<DialogsProps> = ({ username }) => {
+const DialogEl: FC<DialogsProps> = ({ username, dialogId }) => {
 	const dispatch = useAppDispatch()
 
 	return (
 		<NavLink
-			to={`/chat/${username}`}
+			to={`/chat/${dialogId}`}
 			className={({ isActive }) =>
 				isActive
 					? `${styles.dialog} ${styles.active}`
@@ -21,7 +22,9 @@ const DialogEl: FC<DialogsProps> = ({ username }) => {
 			}
 			onClick={() => screenWidthCheck(3, dispatch)}
 		>
-			<div className={styles.dialog_avatar}>{username.slice(0, 2)}</div>
+			<div className={styles.dialog_avatar}>
+				{username.slice(0, 2).toUpperCase()}
+			</div>
 			<div className={styles.dialog_name}>{username}</div>
 		</NavLink>
 	)

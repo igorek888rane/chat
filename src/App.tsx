@@ -38,7 +38,7 @@ function App() {
 				>
 					<Route path={'chat'} element={<ChatPage />} />
 					<Route path={''} element={<ChatPage />} />
-					<Route path={'chat/:username'} element={<ChatPage />} />
+					<Route path={'chat/:dialogsId'} element={<ChatPage />} />
 					<Route path={'search'} element={<SearchPage />} />
 					<Route path={'settings'} element={<SettingPage />} />
 				</Route>

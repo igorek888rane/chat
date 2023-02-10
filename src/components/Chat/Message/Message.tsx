@@ -4,7 +4,7 @@ import { useAppSelector } from '../../../hooks/useApp'
 
 interface MessageProps {
 	message: string
-	userId: number
+	userId: string
 }
 
 const Message: FC<MessageProps> = ({ message, userId }) => {

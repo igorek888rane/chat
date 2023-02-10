@@ -32,7 +32,7 @@ const Chat: FC = () => {
 				>
 					{'<-'}
 				</NavLink>
-				<h1>{params.username}</h1>
+				<h1>{params.dialogsId}</h1>
 			</div>
 			<div
 				className={
