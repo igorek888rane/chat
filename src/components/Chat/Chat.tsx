@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef } from 'react'
 import styles from './Chat.module.scss'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Message from './Message/Message'
 import MessageInputField from './MessageInputField/MessageInputField'
 import { useAppDispatch, useAppSelector } from '../../hooks/useApp'
@@ -10,19 +10,21 @@ import { messageApi } from '../../services/MessagesService/MessagesService'
 import { IMessage } from '../../services/MessagesService/MessageType'
 
 interface ChatProps {
+	messages: IMessage[] | undefined
+	isLoading: boolean
 	companionUsername: string | undefined
-	socket?: WebSocket
+	socket: WebSocket
 }
 
-const Chat: FC<ChatProps> = ({ companionUsername, socket }) => {
+const Chat: FC<ChatProps> = ({
+	messages,
+	isLoading,
+	companionUsername,
+	socket,
+}) => {
 	const intoViewRef = useRef<HTMLDivElement>(null)
 	const { zIndex } = useAppSelector(state => state.zIndex)
 	const dispatch = useAppDispatch()
-	const params = useParams()
-	const { data: messages, isLoading } =
-		messageApi.useFetchMessagesByDialogQuery(`${params.dialogId}`, {
-			pollingInterval: 1000,
-		})
 
 	useEffect(() => {}, [])
 
@@ -34,7 +36,7 @@ const Chat: FC<ChatProps> = ({ companionUsername, socket }) => {
 	}, [messages])
 	const [createMessage, {}] = messageApi.useCreateMessageMutation()
 	const handleSendMessage = async (message: IMessage) => {
-		// socket.send(JSON.stringify({ ...message, method: 'message' }))
+		socket.send(JSON.stringify({ ...message, method: 'message' }))
 		createMessage(message)
 	}
 	return (
