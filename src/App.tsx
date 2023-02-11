@@ -46,14 +46,7 @@ function App() {
 					<Route path={'search'} element={<SearchPage />} />
 					<Route path={'settings'} element={<SettingPage />} />
 				</Route>
-				<Route
-					path={'*'}
-					element={
-						<RequireAuth>
-							<div>Not Found</div>
-						</RequireAuth>
-					}
-				/>
+				<Route path={'*'} element={<div>Not Found</div>} />
 			</Routes>
 		</div>
 	)
