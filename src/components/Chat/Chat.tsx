@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef } from 'react'
 import styles from './Chat.module.scss'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import Message from './Message/Message'
 import MessageInputField from './MessageInputField/MessageInputField'
 import { useAppDispatch, useAppSelector } from '../../hooks/useApp'
@@ -10,23 +10,38 @@ import { messageApi } from '../../services/MessagesService/MessagesService'
 import { IMessage } from '../../services/MessagesService/MessageType'
 
 interface ChatProps {
-	messages: IMessage[] | undefined
-	isLoading: boolean
 	companionUsername: string | undefined
-	socket: WebSocket
 }
 
-const Chat: FC<ChatProps> = ({
-	messages,
-	isLoading,
-	companionUsername,
-	socket,
-}) => {
+const Chat: FC<ChatProps> = ({ companionUsername }) => {
 	const intoViewRef = useRef<HTMLDivElement>(null)
 	const { zIndex } = useAppSelector(state => state.zIndex)
 	const dispatch = useAppDispatch()
+	const params = useParams()
+	const {
+		data: messages,
+		isLoading,
+		refetch,
+	} = messageApi.useFetchMessagesByDialogQuery(`${params.dialogId}`)
+	const socket = new WebSocket('ws://localhost:5000')
 
-	useEffect(() => {}, [])
+	useEffect(() => {
+		socket.onopen = () => {
+			console.log('c')
+			if (params.dialogId) {
+				socket.send(
+					JSON.stringify({
+						method: 'connection',
+						dialogId: params.dialogId,
+					})
+				)
+			}
+		}
+		socket.onmessage = (event: MessageEvent) => {
+			// const msg = JSON.parse(event.data)
+			refetch()
+		}
+	}, [params.dialogId])
 
 	useEffect(() => {
 		intoViewRef.current?.scrollIntoView({
@@ -36,8 +51,8 @@ const Chat: FC<ChatProps> = ({
 	}, [messages])
 	const [createMessage, {}] = messageApi.useCreateMessageMutation()
 	const handleSendMessage = async (message: IMessage) => {
-		socket.send(JSON.stringify({ ...message, method: 'message' }))
-		createMessage(message)
+		await socket.send(JSON.stringify({ ...message, method: 'message' }))
+		await createMessage(message)
 	}
 	return (
 		<div className={styles.chat_block} style={{ zIndex }}>
