@@ -12,12 +12,12 @@ const ChatPage: FC = () => {
 		error,
 		isLoading,
 	} = dialogApi.useFetchDialogsByUserQuery()
-	const dialog = dialogs?.find(dialog => dialog.dialogId === params.dialogsId)
+	const dialog = dialogs?.find(dialog => dialog.dialogId === params.dialogId)
 
 	return (
 		<div className={styles.chat_block}>
 			<Dialogs isLoading={isLoading} error={error} dialogs={dialogs} />
-			{params.hasOwnProperty('dialogsId') ? (
+			{params.hasOwnProperty('dialogId') ? (
 				<Chat companionUsername={dialog?.companionUsername} />
 			) : (
 				<div className={styles.no_chat}>

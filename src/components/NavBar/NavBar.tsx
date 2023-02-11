@@ -20,7 +20,7 @@ const NavBar: FC = () => {
 	return (
 		<div
 			style={
-				params.hasOwnProperty('dialogsId')
+				params.hasOwnProperty('dialogId')
 					? { display: 'none' }
 					: { display: 'flex' }
 			}

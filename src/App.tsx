@@ -18,7 +18,9 @@ function App() {
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
 			dispatch(getMe())
-			navigate(`${location.pathname}`)
+			if (location.pathname !== 'auth') {
+				navigate(`${location.pathname}`)
+			}
 		}
 	}, [])
 	if (loading) {
@@ -39,7 +41,7 @@ function App() {
 				>
 					<Route path={'chat'} element={<ChatPage />} />
 					<Route path={''} element={<ChatPage />} />
-					<Route path={'chat/:dialogsId'} element={<ChatPage />} />
+					<Route path={'chat/:dialogId'} element={<ChatPage />} />
 					<Route path={'search'} element={<SearchPage />} />
 					<Route path={'settings'} element={<SettingPage />} />
 				</Route>
