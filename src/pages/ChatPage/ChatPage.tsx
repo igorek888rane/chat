@@ -14,6 +14,35 @@ const ChatPage: FC = () => {
 	} = dialogApi.useFetchDialogsByUserQuery()
 	const dialog = dialogs?.find(dialog => dialog.dialogId === params.dialogId)
 
+	// const socket = new WebSocket('ws://localhost:5000')
+	//
+	// function connect() {
+	// 	socket.onopen = () => {
+	// 		socket.send(
+	// 			JSON.stringify({
+	// 				method: 'connection',
+	// 				dialogId: params.dialogId,
+	// 			})
+	// 		)
+	// 		console.log('connect')
+	// 	}
+	// 	socket.onmessage = (event: MessageEvent) => {
+	// 		const msg = JSON.parse(event.data)
+	// 		console.log(msg)
+	//
+	// 		switch (msg.method) {
+	// 			case 'connection':
+	// 				break
+	// 			case 'message':
+	// 				break
+	// 		}
+	// 	}
+	// }
+	//
+	// useEffect(() => {
+	// 	connect()
+	// }, [params.dialogId])
+
 	return (
 		<div className={styles.chat_block}>
 			<Dialogs isLoading={isLoading} error={error} dialogs={dialogs} />

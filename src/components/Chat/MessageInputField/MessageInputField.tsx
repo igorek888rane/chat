@@ -1,14 +1,21 @@
 import { FC } from 'react'
 import styles from './MessageInputField.module.scss'
 import { IoSend } from 'react-icons/all'
-import { useAppDispatch, useAppSelector } from '../../../hooks/useApp'
+import { useAppSelector } from '../../../hooks/useApp'
 import { useFormik } from 'formik'
 import MyTextArea from '../../UI/MyTextArea/MyTextArea'
-import { setMessages } from '../../../store/messagesSlice/messagesSlice'
+import { IMessage } from '../../../services/MessagesService/MessageType'
+import { useParams } from 'react-router-dom'
 
-const MessageInputField: FC = () => {
+interface MessageInputFieldProps {
+	handleSendMessage: (message: IMessage) => void
+}
+
+const MessageInputField: FC<MessageInputFieldProps> = ({
+	handleSendMessage,
+}) => {
 	const { id } = useAppSelector(state => state.auth)
-	const dispatch = useAppDispatch()
+	const params = useParams()
 
 	const { handleSubmit, handleChange, values } = useFormik({
 		initialValues: {
@@ -16,14 +23,11 @@ const MessageInputField: FC = () => {
 		},
 		onSubmit: values => {
 			if (values.text) {
-				console.log(values.text)
-				dispatch(
-					setMessages({
-						id: Date.now(),
-						userId: id,
-						message: values.text,
-					})
-				)
+				handleSendMessage({
+					text: values.text,
+					userId: id,
+					dialogId: String(params.dialogId),
+				})
 				values.text = ''
 			}
 		},

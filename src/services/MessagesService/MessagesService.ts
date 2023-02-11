@@ -17,5 +17,13 @@ export const messageApi = createApi({
 			}),
 			providesTags: () => ['Message'],
 		}),
+		createMessage: build.mutation<IMessage, IMessage>({
+			query: message => ({
+				url: `createMessage`,
+				method: 'POST',
+				body: message,
+			}),
+			invalidatesTags: ['Message'],
+		}),
 	}),
 })

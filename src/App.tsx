@@ -18,9 +18,10 @@ function App() {
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
 			dispatch(getMe())
-			if (location.pathname !== 'auth') {
-				navigate(`${location.pathname}`)
+			if (location.pathname === 'auth') {
+				navigate('/chat')
 			}
+			navigate(`${location.pathname}`)
 		}
 	}, [])
 	if (loading) {

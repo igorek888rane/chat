@@ -7,24 +7,36 @@ import { useAppDispatch, useAppSelector } from '../../hooks/useApp'
 import { screenWidthCheck } from '../../utils/screenWidthCheck'
 import { CgHello } from 'react-icons/all'
 import { messageApi } from '../../services/MessagesService/MessagesService'
+import { IMessage } from '../../services/MessagesService/MessageType'
 
 interface ChatProps {
 	companionUsername: string | undefined
+	socket?: WebSocket
 }
 
-const Chat: FC<ChatProps> = ({ companionUsername }) => {
+const Chat: FC<ChatProps> = ({ companionUsername, socket }) => {
 	const intoViewRef = useRef<HTMLDivElement>(null)
 	const { zIndex } = useAppSelector(state => state.zIndex)
 	const dispatch = useAppDispatch()
 	const params = useParams()
 	const { data: messages, isLoading } =
-		messageApi.useFetchMessagesByDialogQuery(`${params.dialogId}`)
+		messageApi.useFetchMessagesByDialogQuery(`${params.dialogId}`, {
+			pollingInterval: 1000,
+		})
+
+	useEffect(() => {}, [])
+
 	useEffect(() => {
 		intoViewRef.current?.scrollIntoView({
 			behavior: 'smooth',
 			block: 'end',
 		})
 	}, [messages])
+	const [createMessage, {}] = messageApi.useCreateMessageMutation()
+	const handleSendMessage = async (message: IMessage) => {
+		// socket.send(JSON.stringify({ ...message, method: 'message' }))
+		createMessage(message)
+	}
 	return (
 		<div className={styles.chat_block} style={{ zIndex }}>
 			<div className={styles.header}>
@@ -44,11 +56,11 @@ const Chat: FC<ChatProps> = ({ companionUsername }) => {
 				}
 			>
 				{messages?.length ? (
-					messages.map(el => (
+					messages.map(mess => (
 						<Message
-							userId={el.userId}
-							message={el.text}
-							key={el.id}
+							userId={mess.userId}
+							message={mess.text}
+							key={mess.id}
 						/>
 					))
 				) : (
@@ -67,7 +79,7 @@ const Chat: FC<ChatProps> = ({ companionUsername }) => {
 				)}
 				<div ref={intoViewRef}></div>
 			</div>
-			<MessageInputField />
+			<MessageInputField handleSendMessage={handleSendMessage} />
 		</div>
 	)
 }
