@@ -6,7 +6,6 @@ import MessageInputField from './MessageInputField/MessageInputField'
 import { useAppDispatch, useAppSelector } from '../../hooks/useApp'
 import { screenWidthCheck } from '../../utils/screenWidthCheck'
 import { CgHello } from 'react-icons/all'
-import { setMessages } from '../../store/messagesSlice/messagesSlice'
 import { messageApi } from '../../services/MessagesService/MessagesService'
 
 interface ChatProps {
@@ -15,9 +14,7 @@ interface ChatProps {
 
 const Chat: FC<ChatProps> = ({ companionUsername }) => {
 	const intoViewRef = useRef<HTMLDivElement>(null)
-	// const { messages } = useAppSelector(state => state.messages)
 	const { zIndex } = useAppSelector(state => state.zIndex)
-	const { id } = useAppSelector(state => state.auth)
 	const dispatch = useAppDispatch()
 	const params = useParams()
 	const { data: messages, isLoading } =
@@ -59,15 +56,6 @@ const Chat: FC<ChatProps> = ({ companionUsername }) => {
 						<h1>No messages</h1>
 						<p>Send a message or click on the greeting below</p>
 						<CgHello
-							onClick={() =>
-								dispatch(
-									setMessages({
-										id: Date.now(),
-										userId: id,
-										message: 'Hello',
-									})
-								)
-							}
 							size={35}
 							style={{
 								color: '#ffff',
