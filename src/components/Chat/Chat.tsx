@@ -24,7 +24,9 @@ const Chat: FC<ChatProps> = ({ companionUsername }) => {
 		refetch,
 	} = messageApi.useFetchMessagesByDialogQuery(`${params.dialogId}`)
 	const socket = new WebSocket('ws://localhost:5000')
-
+	useEffect(() => {
+		refetch()
+	}, [params.dialogId])
 	useEffect(() => {
 		socket.onopen = () => {
 			if (params.dialogId) {
