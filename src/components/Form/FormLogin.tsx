@@ -39,7 +39,6 @@ const FormLogin: FC = () => {
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
 			<MyInput
-				id={'email'}
 				name={'email'}
 				type={'email'}
 				label={'Email'}
@@ -52,7 +51,6 @@ const FormLogin: FC = () => {
 			/>
 
 			<MyInput
-				id={'password'}
 				name={'password'}
 				type={'password'}
 				label={'Password'}

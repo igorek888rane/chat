@@ -27,8 +27,8 @@ const Chat: FC<ChatProps> = ({ companionUsername }) => {
 
 	useEffect(() => {
 		socket.onopen = () => {
-			console.log('c')
 			if (params.dialogId) {
+				console.log(params.dialogId)
 				socket.send(
 					JSON.stringify({
 						method: 'connection',
@@ -38,8 +38,14 @@ const Chat: FC<ChatProps> = ({ companionUsername }) => {
 			}
 		}
 		socket.onmessage = (event: MessageEvent) => {
-			// const msg = JSON.parse(event.data)
-			refetch()
+			const msg = JSON.parse(event.data)
+			if (msg.method === 'connection') {
+				console.log(msg.method)
+			}
+			if (msg.method === 'message') {
+				console.log(msg)
+				refetch()
+			}
 		}
 	}, [params.dialogId])
 

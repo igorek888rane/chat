@@ -1,8 +1,7 @@
-import { ChangeEvent, FocusEvent, FC } from 'react'
+import { ChangeEvent, FC, FocusEvent } from 'react'
 import styles from './MyInput.module.scss'
 
 interface MyInputProps {
-	id: string
 	name: string
 	type: string
 	label: string
@@ -15,7 +14,6 @@ interface MyInputProps {
 }
 
 const MyInput: FC<MyInputProps> = ({
-	id,
 	name,
 	type,
 	label,
@@ -35,7 +33,6 @@ const MyInput: FC<MyInputProps> = ({
 				className={`${styles.input} ${
 					touched && errors ? styles.errorInput : ''
 				}`}
-				id={id}
 				name={name}
 				type={type}
 				placeholder={placeholder}

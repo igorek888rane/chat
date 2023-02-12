@@ -44,7 +44,6 @@ const FormRegister: FC = () => {
 	return (
 		<form className={styles.form} onSubmit={handleSubmit}>
 			<MyInput
-				id={'email'}
 				name={'email'}
 				type={'email'}
 				label={'Email'}
@@ -56,7 +55,6 @@ const FormRegister: FC = () => {
 				onBlur={handleBlur}
 			/>
 			<MyInput
-				id={'username'}
 				name={'username'}
 				type={'text'}
 				label={'Username'}
@@ -68,7 +66,6 @@ const FormRegister: FC = () => {
 				onBlur={handleBlur}
 			/>
 			<MyInput
-				id={'password'}
 				name={'password'}
 				type={'password'}
 				label={'Password'}
